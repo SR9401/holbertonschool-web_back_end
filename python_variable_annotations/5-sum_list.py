@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
-def sum_list(input_list: list) -> float:
+from typing import List
+
+
+def sum_list(input_list: List[float]) -> float:
     """function to add element of the list"""
-    n: float = sum(input_list)
-    return n
+    return sum(input_list)
