@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""7. Complex types - string and int/float to tuple"""
 
 from typing import Tuple, Union
 

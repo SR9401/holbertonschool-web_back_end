@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""5. Complex types - list of floats"""
+"""6. Complex types - mixed list"""
 
 from typing import Union, List
 
