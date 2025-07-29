@@ -2,24 +2,17 @@
 """1. Let's execute multiple coroutines at the same time with async"""
 
 import asyncio
-
+from typing import List
 task_wait_random = __import__('3-tasks').task_wait_random
 
 
-async def task_wait_n(n: int, max_delay: int) -> list[float]:
-    """ write an async routine called wait_n that takes in 2 int arguments"""
+async def task_wait_n(n: int, max_delay: int) -> List[float]:
+    """Spawn task_wait_random n times with the specified max_delay"""
+    tasks = [task_wait_random(max_delay) for _ in range(n)]
+    delays = []
 
-    task = []
+    for task in asyncio.as_completed(tasks):
+        result = await task
+        delays.append(result)
 
-    for _ in range(n):
-        task = asyncio.create_task(task_wait_random(max_delay))
-        task = task.append(task)
-
-    delais = await asyncio.gather(*task)
-
-    a = len(delais)
-    for i in range(a):
-        for j in range(0, a-i-1):
-            if delais[j] > delais[j+1]:
-                delais[j], delais[j+1] = delais[j+1], delais[j]
-    return delais
+    return delays
