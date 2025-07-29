@@ -16,4 +16,9 @@ async def wait_n(n: int, max_delay: int) -> list[float]:
 
     delais = await asyncio.gather(*task)
 
-    return sorted(delais)
+    a = len(delais)
+    for i in range(a):
+        for j in range(0, a-i-1):
+            if delais[j] > delais[j+1]:
+                delais[j], delais[j+1] = delais[j+1], delais[j]
+    return delais
