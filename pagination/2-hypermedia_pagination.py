@@ -45,7 +45,7 @@ class Server:
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         """fun to define vraiable"""
         data: int = self.get_page(page, page_size)
-        total_page: int = math.ceil(len(self.__dataset) / page_size)
+        total_page: int = math.ceil(len(self.dataset()) / page_size)
 
         if (page + 1) > total_page:
             next_page = None
