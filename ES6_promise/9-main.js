@@ -1,14 +1,5 @@
-export default function guardrail(mathFunction) {
-  const queue = [];
+import guardrail from './9-try';
+import divideFunction from './8-try';
 
-  try {
-    const result = mathFunction();
-    queue.push(result);
-  } catch (error) {
-    queue.push(`Error: ${error.message}`);
-  } finally {
-    queue.push('Guardrail was processed');
-  }
-
-  return queue;
-}
+console.log(guardrail(() => { return divideFunction(10, 2)}));
+console.log(guardrail(() => { return divideFunction(10, 0)}));
