@@ -23,7 +23,7 @@ function countStudents(db) {
       });
       Object.keys(work).forEach((wk) => {
         const l = work[wk].join(', ');
-        console.log(`Number of students in ${wk}: ${work[wk].length}. List: ${l}`);
+        return (`Number of students in ${wk}: ${work[wk].length}. List: ${l}`);
       });
       resolve();
     });
