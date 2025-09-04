@@ -7,8 +7,13 @@ app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
 });
 app.get('/students', (req, res) => {
-  const m = countStudents(process.argv[2]);
-  res.send(`This is the list of our students\n${m}`);
+  countStudents(process.argv[2])
+    .then((m) => {
+      res.send(`This is the list of our students\n${m}`);
+    })
+    .catch(() => {
+      res.status(500).send('Cannot load the database');
+    });
 });
 
 app.listen(1245);
